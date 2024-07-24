@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Pizza Cart API</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6f7; /* Light Pink */
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff; /* White */
+            padding: 20px;
+            border-radius: 15px; /* Rounder Corners */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border: 2px solid #ff69b4; /* Hot Pink Border */
+        }
+
+        h1, h2 {
+            color: #ff1493; /* Deep Pink */
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun Font */
+        }
+
+        input.input-field {
+            padding: 10px;
+            border: 2px solid #ffb6c1; /* Light Pink */
+            border-radius: 10px; /* Rounder Corners */
+            margin: 5px 0;
+            width: calc(100% - 24px); /* Full Width Input */
+        }
+
+        button.btn {
+            background-color: #ff69b4; /* Hot Pink */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px; /* Rounder Corners */
+            cursor: pointer;
+            margin: 5px;
+            font-weight: bold; /* Bold Text */
+        }
+
+        button.btn:hover {
+            background-color: #ff1493; /* Deep Pink */
+        }
+
+        .cart, .pizzas {
+            margin-top: 20px;
+        }
+
+        .cart table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .cart table, .cart th, .cart td {
+            border: 2px solid #ffb6c1; /* Light Pink */
+        }
+
+        .cart th, .cart td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .cart th {
+            background-color: #ff69b4; /* Hot Pink */
+            color: white;
+        }
+
+        .pizza {
+            background-color: #fff0f5; /* Lavender Blush */
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 15px; /* Rounder Corners */
+            text-align: center;
+            border: 2px solid #ff69b4; /* Hot Pink Border */
+        }
+
+        .pizza img {
+            max-width: 100%;
+            border-radius: 15px; /* Rounder Corners */
+        }
+
+        .pizza h5 {
+            margin: 10px 0;
+            color: #ff1493; /* Deep Pink */
+        }
+
+        .message {
+            background-color: #ffb6c1; /* Light Pink */
+            padding: 10px;
+            border-radius: 10px; /* Rounder Corners */
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script src="pizza.js"></script>
+</head>
+
+<body x-cloak x-data="pizzaCart" style="display: none !important;">
+    <div class="container">
+        <h1 x-text="title"></h1>
+
+        <div class="cart" x-cloak>
+            <div>
+                <div x-data="{ open: false}" >
+                    Username: <input type="text" x-model="username" class="input-field">
+                    <button x-on:click="login" x-show="username" class="btn">Login</button>
+                    <button x-on:click="logout" x-show="username && cartId" class="btn">Logout</button>
+                </div>
+                <div x-show="!cartId">
+                    Cart code: <span x-text="cartId"></span>
+                </div>
+            </div>
+            <div x-cloak x-show="cartTotal > 0">
+                <h2>Your cart</h2>
+                <div x-text="message" class="message">message here</div>
+                <table>
+                    <tr>
+                        <th>Flavour</th>
+                        <th>Size</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Total</th>
+                    </tr>
+
+                    <template x-for="pizza in cartPizzas">
+                        <tr>
+                            <td x-text="pizza.flavour"></td>
+                            <td x-text="pizza.size"></td>
+                            <td x-text="pizza.price"></td>
+                            <td>
+                                <button x-on:click="addPizzaToCart(pizza.id)" class="btn">+</button>
+                                x<span x-text="pizza.qty"></span>
+                                <button x-on:click="removePizzaFromCart(pizza.id)" class="btn">-</button>
+                            </td>
+                            <td x-text="pizza.total"></td>
+                        </tr>
+                    </template>
+
+                    <tr>
+                        <td colspan="3">Total</td>
+                        <td colspan="2" style="text-align: right;"> R <span x-text='cartTotal'></span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Pay now</td>
+                        <td>
+                            <input x-model="paymentAmount" type="text" class="input-field">
+                        </td>
+                        <td><button x-on:click="payForCart" class="btn">Pay</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <h2>Pizzas</h2>
+        <div class="pizzas">
+            <template x-for="pizza in pizzas">
+                <div class="pizza">
+                    <img src="https://thumbs.dreamstime.com/z/delicious-pizza-slices-high-angle-view-delicious-pizza-cut-slices-mozzarella-cheese-vegetables-tomato-sauce-mushrooms-273828863.jpg?ct=jpeg" alt="Medium Pizza">
+                    <h5 x-text="pizza.flavour"></h5>
+                    <span x-text="pizza.size"></span>
+                    <strong>
+                        R<span x-text="pizza.price"></span>
+                    </strong>
+                    <div>
+                        <button class="btn" x-on:click="addPizzaToCart(pizza.id)">Add to Cart</button>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+</body>
+
+</html>

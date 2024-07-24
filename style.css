@@ -1,0 +1,97 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffe6f7; /* Light Pink */
+    color: #333;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff; /* White */
+    padding: 20px;
+    border-radius: 15px; /* Rounder Corners */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ff69b4; /* Hot Pink Border */
+}
+
+h1, h2 {
+    color: #ff1493; /* Deep Pink */
+    text-align: center;
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun Font */
+}
+
+input.input-field {
+    padding: 10px;
+    border: 2px solid #ffb6c1; /* Light Pink */
+    border-radius: 10px; /* Rounder Corners */
+    margin: 5px 0;
+    width: calc(100% - 24px); /* Full Width Input */
+}
+
+button.btn {
+    background-color: #ff69b4; /* Hot Pink */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px; /* Rounder Corners */
+    cursor: pointer;
+    margin: 5px;
+    font-weight: bold; /* Bold Text */
+}
+
+button.btn:hover {
+    background-color: #ff1493; /* Deep Pink */
+}
+
+.cart, .pizzas {
+    margin-top: 20px;
+}
+
+.cart table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.cart table, .cart th, .cart td {
+    border: 2px solid #ffb6c1; /* Light Pink */
+}
+
+.cart th, .cart td {
+    padding: 10px;
+    text-align: left;
+}
+
+.cart th {
+    background-color: #ff69b4; /* Hot Pink */
+    color: white;
+}
+
+.pizza {
+    background-color: #fff0f5; /* Lavender Blush */
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 15px; /* Rounder Corners */
+    text-align: center;
+    border: 2px solid #ff69b4; /* Hot Pink Border */
+}
+
+.pizza img {
+    max-width: 100%;
+    border-radius: 15px; /* Rounder Corners */
+}
+
+.pizza h5 {
+    margin: 10px 0;
+    color: #ff1493; /* Deep Pink */
+}
+
+.message {
+    background-color: #ffb6c1; /* Light Pink */
+    padding: 10px;
+    border-radius: 10px; /* Rounder Corners */
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
