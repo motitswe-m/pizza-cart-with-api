@@ -1,33 +1,28 @@
-
-
-
-
 GET https://pizza-api.projectcodex.net/api/pizzas
 
 ### Create a cart
-GET https://pizza-api.projectcodex.net/api/pizza-cart/create?username=17006827
+GET https://pizza-api.projectcodex.net/api/pizza-cart/create?username=motitswe-m
 
 ### Get a cart
-GET https://pizza-api.projectcodex.net/api/pizza-cart/5KOywRNxVd/get
-
+GET https://pizza-api.projectcodex.net/api/pizza-cart/rwoNroZWXz/get
 
 ### Add a pizza to the cart
 POST https://pizza-api.projectcodex.net/api/pizza-cart/add
 Content-Type: application/json
 
 {
-    "cart_code": "5KOywRNxVd",
+    "cart_code": "rwoNroZWXz",
     "pizza_id": 3
 }
 
 ### Add a pizza to the cart
 
 POST https://pizza-api.projectcodex.net/api/pizza-cart/add
-content-type : application/json
+Content-Type: application/json
 
 {
-    "cart_code" : "5KOywRNxVd",
-    "pizza_id" : 7
+    "cart_code": "rwoNroZWXz",
+    "pizza_id": 7
 }
 
 ### Remove from the cart
@@ -36,35 +31,34 @@ POST https://pizza-api.projectcodex.net/api/pizza-cart/remove
 Content-Type: application/json
 
 {
-    "cart_code" : "5KOywRNxVd",
-    "pizza_id" : 10
+    "cart_code": "rwoNroZWXz",
+    "pizza_id": 10
 }
 
 ### GET all the carts for a given user
 
-GET https://pizza-api.projectcodex.net/api/pizza-cart/username/17006827
+GET https://pizza-api.projectcodex.net/api/pizza-cart/username/motitswe-m
 
 ### GET all the active carts for a user
-GET https://pizza-api.projectcodex.net/api/pizza-cart/username/17006827/active
+GET https://pizza-api.projectcodex.net/api/pizza-cart/username/motitswe-m/active
 
 ### Pay for a pizza from the cart
 POST https://pizza-api.projectcodex.net/api/pizza-cart/pay
-content-type: application/json
+Content-Type: application/json
 
 {
-    "cart_code" : "5KOywRNxVd",
-    "amount" : 800
+    "cart_code": "rwoNroZWXz",
+    "amount": 800
 }
 
-
 ### Featured Items To Get
-GET https://pizza-api.projectcodex.net/api/pizzas/featured?username=17006827
+GET https://pizza-api.projectcodex.net/api/pizzas/featured?username=motitswe-m
 
 ##### Set a given pizza id to be featured - max 3 ids
 POST https://pizza-api.projectcodex.net/api/pizzas/featured
-content-type: application/json
+Content-Type: application/json
 
 {
-    "username": "17006827",
+    "username": "motitswe-m",
     "pizza_id": 4
 }
