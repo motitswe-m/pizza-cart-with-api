@@ -1,102 +1,203 @@
+/* General Styles */
 body {
     font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
     background-color: #ffe6f7; /* Light Pink */
-    color: #333;
-    padding: 20px;
+    color: #333; /* Dark text */
+}
+
+img {
+    height: 100px; /* Smaller height */
+    width: 150px; /* Smaller width */
 }
 
 .container {
-    max-width: 800px;
+    width: 90%;
+    max-width: 1200px;
     margin: 0 auto;
-    background-color: #ffffff; /* White */
     padding: 20px;
+    background-color: #ffffff; /* White */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 15px; /* Rounder Corners */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     border: 2px solid #ff69b4; /* Hot Pink Border */
+    margin-top: 20px;
 }
 
-h1, h2 {
-    color: #ff1493; /* Deep Pink */
+h1 {
     text-align: center;
+    color: #ff1493; /* Deep Pink */
+    margin-bottom: 40px;
     font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun Font */
 }
 
-input.input-field {
+h2 {
+    text-align: center;
+    color: #ff1493; /* Deep Pink */
+    margin: 40px 0 20px;
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun Font */
+}
+
+/* Cart Styles */
+.cart {
+    margin-bottom: 40px;
+}
+
+.cart div {
+    margin-bottom: 20px;
+}
+
+.cart input[type="text"] {
     padding: 10px;
     border: 2px solid #ffb6c1; /* Light Pink */
     border-radius: 10px; /* Rounder Corners */
-    margin: 5px 0;
-    width: calc(100% - 24px); /* Full Width Input */
+    width: 100%;
+    max-width: 200px;
+    box-sizing: border-box;
+    background-color: #ffffff; /* White */
+    color: #333; /* Dark text */
 }
 
-button.btn {
+.cart button {
+    padding: 10px 20px;
     background-color: #ff69b4; /* Hot Pink */
     color: white;
     border: none;
-    padding: 10px 20px;
     border-radius: 10px; /* Rounder Corners */
     cursor: pointer;
     margin: 5px;
     font-weight: bold; /* Bold Text */
+    transition: background-color 0.3s;
 }
 
-button.btn:hover {
+.cart button:hover {
     background-color: #ff1493; /* Deep Pink */
-}
-
-.cart, .pizzas {
-    margin-top: 20px;
 }
 
 .cart table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    color: #333; /* Dark text */
 }
 
-.cart table, .cart th, .cart td {
-    border: 2px solid #ffb6c1; /* Light Pink */
-}
-
-.cart th, .cart td {
+.cart table th, .cart table td {
     padding: 10px;
-    text-align: left;
+    border: 2px solid #ffb6c1; /* Light Pink */
+    text-align: center;
 }
 
-.cart th {
+.cart table th {
     background-color: #ff69b4; /* Hot Pink */
     color: white;
 }
 
+.cart table td button {
+    padding: 5px 10px;
+    background-color: #ff69b4; /* Hot Pink */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px; /* Rounder Corners */
+    transition: background-color 0.3s;
+}
+
+.cart table td button:hover {
+    background-color: #ff1493; /* Deep Pink */
+}
+
+/* Pizza List Styles */
+.pizzas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
 .pizza {
+    width: 30%; /* Adjust width to fit three in a row */
     background-color: #fff0f5; /* Lavender Blush */
-    padding: 10px;
-    margin: 10px 0;
+    border: 2px solid #ff69b4; /* Hot Pink Border */
     border-radius: 15px; /* Rounder Corners */
     text-align: center;
-    border: 2px solid #ff69b4; /* Hot Pink Border */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.pizza:hover {
+    transform: translateY(-5px);
 }
 
 .pizza img {
-    max-width: 100%;
+    width: 100%;
+    height: auto;
     border-radius: 15px; /* Rounder Corners */
+    margin-bottom: 15px;
 }
 
 .pizza h5 {
     margin: 10px 0;
+    font-size: 1.2em;
     color: #ff1493; /* Deep Pink */
 }
 
-.message {
-    background-color: #ffb6c1; /* Light Pink */
-    padding: 10px;
-    border-radius: 10px; /* Rounder Corners */
-    color: white;
-    text-align: center;
-    margin-bottom: 20px;
+.pizza span {
+    display: block;
+    margin-bottom: 10px;
+    color: #ccc;
 }
-.pizza {
-    border:1px solid;
-    margin-bottom: 1em;
-    padding: 1em;
+
+.pizza strong {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    color: #ff1493; /* Deep Pink */
+}
+
+.pizza .btn {
+    padding: 10px 20px;
+    background-color: #ff69b4; /* Hot Pink */
+    color: white;
+    border: none;
+    border-radius: 10px; /* Rounder Corners */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.pizza .btn:hover {
+    background-color: #ff1493; /* Deep Pink */
+}
+
+/* Filter Buttons */
+.filter-buttons {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.filter-buttons button {
+    padding: 10px 20px;
+    background-color: #ff69b4; /* Hot Pink */
+    color: white;
+    border: none;
+    border-radius: 10px; /* Rounder Corners */
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter-buttons button:hover {
+    background-color: #ff1493; /* Deep Pink */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pizzas {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pizza {
+        width: 80%;
+    }
 }
