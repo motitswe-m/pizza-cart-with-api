@@ -9,24 +9,28 @@
     <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <script src="pizza.js"></script>
+
+
 </head>
 
-<body x-cloak x-data="pizzaCart" style="display: none !important;">
+<body [x-cloak] { display: none !important; } x-data="pizzaCart">
     <div class="container">
         <h1 x-text="title"></h1>
 
-        <div class="cart" x-cloak>
+        <div class="cart" [x-cloak] { display: none !important; }>
             <div>
                 <div x-data="{ open: false}" >
-                    Username: <input type="text" x-model="username" class="input-field">
-                    <button x-on:click="login" x-show="username" class="btn">Login</button>
-                    <button x-on:click="logout" x-show="username && cartId" class="btn">Logout</button>
+                    Username: <input type="text" x-model="username">
+                    <button x-on:click="login" x-show="username">Login</button>
+                    
+                    <button x-on:click="logout" x-show="username && cartId ">Logout</button>
                 </div>
                 <div x-show="!cartId">
-                    Cart code: <span x-text="cartId"></span>
+                     Cart code: <span x-text="cartId"></span>
                 </div>
+               
             </div>
-            <div x-cloak x-show="cartTotal > 0">
+            <div [x-cloak] { display: none !important; } x-show="cartTotal > 0">
                 <h2>Your cart</h2>
                 <div x-text="message" class="message">message here</div>
                 <table>
@@ -44,12 +48,15 @@
                             <td x-text="pizza.size"></td>
                             <td x-text="pizza.price"></td>
                             <td>
-                                <button x-on:click="addPizzaToCart(pizza.id)" class="btn">+</button>
+                                <button x-on:click="addPizzaToCart(pizza.id)">+</button>
                                 x<span x-text="pizza.qty"></span>
-                                <button x-on:click="removePizzaFromCart(pizza.id)" class="btn">-</button>
+                                <button x-on:click="removePizzaFromCart(pizza.id)">-</button>
                             </td>
                             <td x-text="pizza.total"></td>
                         </tr>
+
+
+
                     </template>
 
                     <tr>
@@ -59,19 +66,23 @@
                     <tr>
                         <td colspan="3">Pay now</td>
                         <td>
-                            <input x-model="paymentAmount" type="text" class="input-field">
+                            <input x-model="paymentAmount" type="text">
                         </td>
-                        <td><button x-on:click="payForCart" class="btn">Pay</button></td>
+                        <td><button x-on:click="payForCart">Pay</button></td>
                     </tr>
                 </table>
             </div>
-        </div>
 
+
+
+        </div>
         <h2>Pizzas</h2>
         <div class="pizzas">
+           
+           
             <template x-for="pizza in pizzas">
                 <div class="pizza">
-                    <img src="https://www.google.com/imgres?q=pizza%20image&imgurl=https%3A%2F%2Fimages.ctfassets.net%2Fj8tkpy1gjhi5%2F5OvVmigx6VIUsyoKz1EHUs%2Fb8173b7dcfbd6da341ce11bcebfa86ea%2FSalami-pizza-hero.jpg&imgrefurl=https%3A%2F%2Fwww.tillamook.com%2Frecipes%2Fsalami-red-onion-and-oregano-pizza&docid=Csfby1duuZ0-_M&tbnid=ma2eYxkBz-_QIM&vet=12ahUKEwjf1fuXxsCHAxUUBdsEHZsCMRMQM3oECDMQAA..i&w=1344&h=1640&hcb=2&ved=2ahUKEwjf1fuXxsCHAxUUBdsEHZsCMRMQM3oECDMQAA" alt="Medium Pizza">
+                    <img src="https://media.istockphoto.com/id/938742222/photo/cheesy-pepperoni-pizza.jpg?s=1024x1024&w=is&k=20&c=OKXH55QwDa6L3cY2pTTz1DKVT2clqW3zcVaJVaU-N_U=" alt="Medium Pizza">
                     <h5 x-text="pizza.flavour"></h5>
                     <span x-text="pizza.size"></span>
                     <strong>
@@ -81,9 +92,15 @@
                         <button class="btn" x-on:click="addPizzaToCart(pizza.id)">Add to Cart</button>
                     </div>
                 </div>
+
             </template>
+
         </div>
+
     </div>
+
+
+
 </body>
 
 </html>
