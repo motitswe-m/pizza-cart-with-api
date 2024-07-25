@@ -8,8 +8,8 @@ body {
 }
 
 img {
-    height: 100px; /* Smaller height */
-    width: 150px; /* Smaller width */
+    height: 150px !important;
+    width: 200px !important;
 }
 
 .container {
@@ -115,7 +115,8 @@ h2 {
 }
 
 .pizza {
-    width: 30%; /* Adjust width to fit three in a row */
+    width: 100%;
+    max-width: 300px;
     background-color: #fff0f5; /* Lavender Blush */
     border: 2px solid #ff69b4; /* Hot Pink Border */
     border-radius: 15px; /* Rounder Corners */
